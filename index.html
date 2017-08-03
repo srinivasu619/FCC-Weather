@@ -7,6 +7,51 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
+        <div id="mainContainer">
+            <div id="city">
+                <img src="http://i.imgrpost.com/imgr/2017/08/01/001-gate-of-india.png" alt="001-gate-of-india.png" border="0">
+                <span id="location"></span>
+            </div>
+            <div id="tempInfo">
+                <div id="wrapper">
+                <img src="http://i.imgrpost.com/imgr/2017/08/01/006-sunny.png" alt="006-sunny.png" border="0" />
+                <div>
+                    <h4 id="presentTemp"></h4>
+                    <p id="condition"></p>
+                </div>
+                </div>
+            </div>
+            <div id="weatherinfo">
+                <div id="range">
+                <h4>Tempratures</h4>
+                <div>
+                    <h5>Max. Temp: <span id="maxTemp"></span></h5>
+                    <h5>Min. Temp: <span id="minTemp"></span></h5>
+                </div>
+                </div>
+                <div id= "wind" class="common">
+                <img src="http://i.imgrpost.com/imgr/2017/08/01/005-weather.png" alt="005-weather.png" border="0">
+                <div>
+                    <h5>Speed: <span id="windspeed"></span></h5>
+                    <h5>Degree: <span id="windDeg"></span></h5>
+                </div>
+                </div>
+                <div id = "pressure" class="common">
+                <img src="http://i.imgrpost.com/imgr/2017/08/01/002-velocity.png" alt="002-velocity.png" border="0">
+                <div>
+                    <h5>Pressure</h5>
+                    <h5 id="pressureVal"></h5>
+                </div>
+                </div>
+                <div id = "humidity" class="common">
+                <img src="http://i.imgrpost.com/imgr/2017/08/01/003-raindrops.png" alt="003-raindrops.png" border="0">
+                <div>
+                    <h5>Humidity</h5>
+                    <h5 id="humidityVal"></h5>
+                </div>
+                </div>
+            </div>
+            </div>
         <script src="script.js"></script>
     </body>
 </html>
