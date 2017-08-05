@@ -1,5 +1,22 @@
 $(document).ready(function() {
   console.log("Document Ready");
+  var toogle=true;
+  $('#toggle').on('click',function(e){
+    e.preventDefault();
+    var temp = parseFloat(document.getElementById('presentTemp').innerHTML.split(' '));
+    //console.log(coverter(temp,toggle));
+    if(toggle)
+      {
+        $('#presentTemp').text(coverter(temp,toggle)+" \u2109");
+        $('#toggle').text('\u2109 \u2192 \u2103');
+      }
+    else
+      {
+        $('#presentTemp').text(coverter(temp,toggle)+" \u2103");
+        $('#toggle').text('\u2103 \u2192 \u2109');
+      }
+    toggle=!toggle;
+  });
   var latitude,longitude ;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -8,28 +25,16 @@ $(document).ready(function() {
       giveWeatherDetails(latitude,longitude);
     });
   }
-  else
-    {
-      latitude = 35;
-      longitude = 139;
-      giveWeatherDetails(latitude,longitude);
-    }
 });
 
 function giveWeatherDetails(latitude, longitude) {
   //console.log(typeof latitude+" "+typeof longitude);
-  var data;
-  $.get(
-    "https://fcc-weather-api.glitch.me/api/current?lat=" +
-      latitude +
-      "&lon=" +
-      longitude,
-    function(response) {
+  $.get("https://fcc-weather-api.glitch.me/api/current?lat=" +latitude +"&lon=" +longitude,function(response) {
       //console.log(response.coord);
       // console.log(response.name)
       // console.log(response.sys.country);
       $('#location').text(response.name+" , "+response.sys.country);
-      console.log(response.main);
+      $('#weatherImg').attr('src',response.weather[0].icon);
       $('#presentTemp').text(response.main.temp+" \u2103");
       $('#condition').text(response.weather[0].main);
       $('#maxTemp').text(response.main.temp_max+" \u2103");
@@ -42,4 +47,16 @@ function giveWeatherDetails(latitude, longitude) {
       // console.log(response.wind);
     }
   );
+}
+
+function coverter(temp,type)
+{
+  if(type)
+    {
+      return ((9/5)*temp+32);
+    }
+  else
+    {
+      return ((temp-32)*(5/9));
+    }
 }
